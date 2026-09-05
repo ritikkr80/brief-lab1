@@ -1,10 +1,7 @@
 # Brief Lab — AI Pre-Production Layer
 
-> **Before you cast an actor or spend a render, know what you're making.**
-
 Brief Lab is an AI creative pre-production companion built for the HexCoded platform. It transforms rough product briefs into structured creative concepts, shot lists, casting direction, and node-based production workflows — before a single frame is rendered.
 
----
 
 ## What it does
 
@@ -54,10 +51,7 @@ Then fill in `.env.local`:
 | Variable | Required | Notes |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | ✅ Yes | [Anthropic Console](https://console.anthropic.com) |
-| `FIRECRAWL_API_KEY` | ⚠️ Optional | Enables URL product analysis. [Firecrawl](https://firecrawl.dev) |
-| `NEXT_PUBLIC_SUPABASE_URL` | ⚠️ Optional | Enables persistent storage |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ⚠️ Optional | Enables persistent storage |
-| `SUPABASE_SERVICE_ROLE_KEY` | ⚠️ Optional | Server-side DB writes |
+
 
 > **Zero-config mode:** Without any API keys, the app still works — it uses a high-fidelity built-in concept engine to generate realistic water bottle / product ad concepts. Ideal for recruiter demos.
 
@@ -68,7 +62,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
-
+open [https://brief-lab1.vercel.app/]
 ---
 
 ## Architecture
@@ -117,40 +111,6 @@ Claude **only recommends tools from this catalog** — it cannot hallucinate new
 
 ---
 
-## Workflow JSON export
-
-Every concept can be exported as a HexCoded-compatible node graph JSON:
-
-```json
-{
-  "id": "workflow-uuid",
-  "name": "UGC Water Bottle Ad — Production Graph",
-  "conceptId": "concept-id",
-  "nodes": [
-    { "id": "brief-node", "type": "briefNode", "data": { "title": "Product Brief", ... } },
-    { "id": "director-node", "type": "directorNode", "data": { ... } },
-    ...
-  ],
-  "edges": [
-    { "id": "e1-2", "source": "brief-node", "target": "director-node", "animated": true }
-  ]
-}
-```
-
-Use **Copy Workflow** or **Export Pipeline JSON** on the workflow canvas.
-
----
-
-## Deploy to Vercel
-
-1. Push to GitHub
-2. Connect repo at [vercel.com/new](https://vercel.com/new)
-3. Set environment variables in Vercel dashboard
-4. Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/brief-lab)
-
----
 
 ## Folder structure
 
@@ -209,4 +169,3 @@ brief-lab/
 | `--paper` | `#F1EBDD` | Card backgrounds |
 | `--accent` | `#EF432F` | CTAs and highlights |
 
-Typography: **DM Serif Display** (headlines) · **Inter** (UI) · **Geist Mono** (code/labels)

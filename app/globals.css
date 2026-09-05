@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --page: #F7F5F0;
+    --text: #171717;
+    --muted: #6F6A61;
+    --border: #DDD8CE;
+    --paper: #F1EBDD;
+    --paper-card: #F4EFE6;
+    --paper-card-highlight: #FAF7F0;
+    --input: #FFFFFF;
+    --accent: #EF432F;
+    --accent-hover: #D93825;
+    --dark: #202020;
+    --dark-surface: #282828;
+  }
+
+  body {
+    background-color: var(--page);
+    color: var(--text);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Editorial Paper Styling and Perforations */
+.paper-card {
+  background-color: var(--paper);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(45, 35, 20, 0.03);
+}
+
+.perforated-border {
+  border-bottom: 1px dashed var(--border);
+  position: relative;
+}
+
+.perforated-border::before,
+.perforated-border::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--page);
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  z-index: 10;
+}
+
+.perforated-border::before {
+  left: -7px;
+  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.perforated-border::after {
+  right: -7px;
+  clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+}
+
+.paper-texture {
+  background-image: radial-gradient(#d6cebe 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+}
+
+/* React Flow Canvas Customizations for Light Paper Mode */
+.react-flow__background {
+  background-color: #F7F5F0 !important;
+}
+
+.react-flow__edge-path {
+  stroke: #DDD8CE !important;
+  stroke-width: 2px !important;
+}
+
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke: #EF432F !important;
+  stroke-dasharray: 5;
+  animation: react-flow__dashdraw 0.6s linear infinite;
+}
+
+.react-flow__handle {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #171717 !important;
+  border: 2px solid #F7F5F0 !important;
+}
+
+.react-flow__controls {
+  border: 1px solid #DDD8CE !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+  background-color: #FFFFFF !important;
+  border-radius: 6px !important;
+}
+
+.react-flow__controls-button {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #DDD8CE !important;
+  color: #171717 !important;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #F4EFE6 !important;
+}
